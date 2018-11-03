@@ -1,0 +1,25 @@
+{
+  "name": "mongopi",
+  "version": "1.0.0",
+  "description": "mongodb for pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "chmod 700 ./run.sh && ./run.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbox3d/mongoPi.git"
+  },
+  "keywords": [
+    "mongodb",
+    "raspberrypi",
+    "arm"
+  ],
+  "author": "gbox3d",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbox3d/mongoPi/issues"
+  },
+  "homepage": "https://github.com/gbox3d/mongoPi#readme"
+}
