@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "========== install mongodb ================"
+sudo apt-get install mongodb-server
+
 echo "========== update mongodb version ================"
 sudo service  mongodb stop
 echo "========== download binary ================"
