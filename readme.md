@@ -1,8 +1,20 @@
 mongoPi
 ====
 
-# 1. 소스빌드하기 
+# 1. 바이너리 배포판 설치하기
+pimongo_inst.sh 스크립트 실행
 
+mongo로 쉘에 접속되지않으면 한번더 몽고 디비 설치한다.
+
+```sh
+sudo apt-get install mongodb-server
+```
+위와 같이 하면 예전 버전이 아닌 새로운 버전으로 나오며 아까의 에러는 잡혀있다.(2020.2.20 현재)
+
+
+
+
+# 2. 소스빌드하기 
 
 ## method 1 (for 32bit only)
 
@@ -23,17 +35,34 @@ cd mongodb-src-r3.2.12
 라이브러리 설치
 
 ```bash
-sudo aptitude install scons build-essential
-sudo aptitude install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
-sudo aptitude install python-pymongo
+sudo apt-get install -y scons build-essential 
+sudo apt-get install -y libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
+sudo apt-get install -y python-pymongo
 ```
  
 스왑파일 확보 ( 컴파일 작업후 삭제)
+
 ```bash
 sudo dd if=/dev/zero of=/mytempswapfile bs=1024 count=524288
 sudo chmod 0600 /mytempswapfile
 sudo mkswap /mytempswapfile
 sudo swapon /mytempswapfile
+```
+
+또는 
+/etc/dphys-swapfile 파일을 열어서 CONF_SWAPSIZE 를 2048로 수정합니다.
+
+```bash
+# set size to absolute value, leaving empty (default) then uses computed value
+#   you most likely don't want this, unless you have an special disk situation
+# CONF_SWAPSIZE=100
+CONF_SWAPSIZE=2048
+```
+
+스왑 서비스 재시작하여 변경된 설정을 반영시켜주면 스왑 크기가 대략 20배가 됩니다. 
+```bash
+
+sudo /etc/init.d/dphys-swapfile restart
 ```
 
 arm 프로세서용 환경 설정

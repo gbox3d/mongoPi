@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "========== install tool-chain ================"
-sudo apt-get install scons libssl-dev python-pip libffi-dev libcurl4-openssl-dev cmake
+sudo apt-get install scons libssl-dev python-pip libffi-dev libcurl4-openssl-dev cmake -y
 
 
 echo "========== python requirements install ======="
